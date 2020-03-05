@@ -1,23 +1,15 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.6">
-    <title>SAVI</title>
+    <meta name="author" content="Jordi Vilaplana">
+    <title>Projecte SAVI - Universitat de Lleida</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/starter-template/">
-
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <!-- Favicons -->
-    <meta name="theme-color" content="#563d7c">
-
-
+    <link rel="shortcut icon" href="https://www.udl.cat/favicon.ico" />
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -27,24 +19,61 @@
         -ms-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
+      .starter-template {
+        margin-top: 80px;
+      }
+      #stopwatch {
+        background: #eee;
+        border: 1px solid #999;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 250px;
+      }
+      #sw-time {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+      }
+      #sw-rst, #sw-go {
+        width: 45%;
+        box-sizing: padding-box;
+        padding: 4px;
+        display: inline-block;
+        background: #aa2f2f;
+        border: 0;
+        color: #fff;
+      }
+      .navbar-dark {
+        background-color: #830051 !important;
+      }
+
+      @media print {
+        nav, .col-9, #stopwatch, .card-footer {
+          display: none;
+        }
+        .col-3 {
+          width: 100%;
+          max-width: 100%;
+          flex: auto;
+          float: left;
+        }
+      }
     </style>
     <!-- Custom styles for this template -->
-
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#"><img src="http://www.imatge.udl.cat/marca/png/simbol.png" height="40" title="UdL" /> SAVI</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <!--
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -68,23 +97,93 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
+    -->
   </div>
 </nav>
-
-<main role="main" class="container">
-
-  <div class="starter-template">
-      <h1>Universitat de Lleida - Projecte SAVI</h1>
-
-<iframe class="_vs-player" src="https://swiftcdn6.global.ssl.fastly.net/projects/5e56942a1c7e0/index.html?cb=5hs1rybuu6fm2gwn39ncyf" width=720 height=405 frameborder="0" allow="autoplay *" style="opacity: 0"></iframe><script src="https://vsplayer.global.ssl.fastly.net/wrapper-v3.js"></script>
-
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<main role="main" class="container starter-template">
+  <div class="row">
+    <div class="col-12">
+      <h1>Proyecto SAVI</h1>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-9">
+      <iframe id="virtualSim" class="_vs-player" src="https://swiftcdn6.global.ssl.fastly.net/projects/5e56942a1c7e0/index.html?cb=5hs1rybuu6fm2gwn39ncyf" width=720 height=405 frameborder="0" allow="autoplay *" style="opacity: 0"></iframe><script src="https://vsplayer.global.ssl.fastly.net/wrapper-v3.js"></script>
+    </div>
+    <div class="col-3">
+      <div id="stopwatch">
+        <!-- [DISPLAY TIMER] -->
+        <div id="sw-time">00:00:00</div>
+        <!-- [RESET BUTTON] -->
+        <input type="button" value="Reiniciar" id="sw-rst" disabled/>
+        <!-- [START/STOP BUTTON] -->
+        <input type="button" value="Iniciar" id="sw-go" disabled/>
+      </div>
+      <div class="card mt-3">
+        <div class="card-header">
+          Checklist
+        </div>
+        <div class="card-body">
+          <input id="c1" name="c1" type="checkbox" /> <label for="c1">Actividad 1</label> <br />
+          <input id="c2" name="c2" type="checkbox" /> <label for="c2">Actividad 2</label> <br />
+          <input id="c3" name="c3" type="checkbox" /> <label for="c3">Actividad 3</label> <br />
+          <input id="c4" name="c4" type="checkbox" /> <label for="c4">Actividad 4</label> <br />
+          <input id="c5" name="c5" type="checkbox" /> <label for="c5">Actividad 5</label>
+        </div>
+        <div class="card-footer">
+          <span class="btn btn-primary" onclick="window.print();">Imprimir</span>
+        </div>
+      </div>
 
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-12">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_Universitat_de_Lleida.svg" height="48" />
+      <img src="https://www.sessep.com/wp-content/uploads/2019/10/01-4D-HEALTH-COLOR.jpg" height="48" style="padding-left: 20px;" />
+    </div>
+  </div>
 </main><!-- /.container -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bienvenido/a a la Simulación Virtual SAVI!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>En la siguiente actividad realizará una simulación virtual en que, dependiendo de tus decisiones, el caso evolucionará de una fora u de otra. Al final de la simulación verás tu puntuación final en función de las deiciones tomadas durante la misma.</p>
+        <p class="lead"><i class="fas fa-info-circle"></i> Instrucciones</p>
+        <ul>
+          <li><i class="far fa-clock"></i> La sesión tiene una duración aproximada de entre 30 - 45 minutos.</li>
+          <li><i class="far fa-hand-paper"></i> Una vez empezada, se debe finalizar en la misma sesión.</li>
+          <li><i class="fas fa-power-off"></i> No se puede retroceder ni guardar el progreso, si se cierra la ventana se tendrá que empezar de nuevo.</li>
+          <li><i class="fas fa-stopwatch"></i> Dispones de un cronometro integrado para monitorizar el tiempo invertido.</li>
+          <li><i class="fas fa-check-double"></i> Dispones de un checklist en el que debes marcar las decisiones tomadas.</li>
+          <li><i class="far fa-play-circle"></i> Pulse en el símbolo de "Play" en el vídeo para empezar la simulación.</li>
+        </ul>
+        <p>¡Buena suerte!</p>
+      </div>
+      <div class="modal-footer">
+        <button id="startButton" type="button" class="btn btn-primary mr-auto" data-dismiss="modal">Empezar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/292f181dff.js" crossorigin="anonymous"></script>
+<script src="stopwatch.js"></script>
+<script type="text/javascript">
+  $('#exampleModal').modal('show');
+</script>
 </body>
 </html>
 
