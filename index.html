@@ -100,7 +100,7 @@
     -->
   </div>
 </nav>
-<main role="main" class="container starter-template">
+<main role="main" class="container-fluid starter-template">
   <div class="row">
     <div class="col-9">
       <h1>Proyecto SAVI</h1>
@@ -121,7 +121,7 @@
   </div>
   <div class="row">
     <div class="col-9 mt-3">
-      <iframe id="virtualSim" class="_vs-player" src="https://swiftcdn6.global.ssl.fastly.net/projects/5e56942a1c7e0/index.html?cb=5hs1rybuu6fm2gwn39ncyf" width=720 height=405 frameborder="0" allow="autoplay *" style="opacity: 0"></iframe><script src="https://vsplayer.global.ssl.fastly.net/wrapper-v3.js"></script>
+      <iframe id="virtualSim" class="_vs-player position-fixed" src="https://swiftcdn6.global.ssl.fastly.net/projects/5e56942a1c7e0/index.html?cb=5hs1rybuu6fm2gwn39ncyf" width=720 height=405 frameborder="0" allow="autoplay *" style="opacity: 0"></iframe><script src="https://vsplayer.global.ssl.fastly.net/wrapper-v3.js"></script>
     </div>
     <div class="col-3">
       <div class="card mt-3">
@@ -129,53 +129,64 @@
           Puntos de decisión (PD)
         </div>
         <div class="card-body">
-          <input type="text" name="student" class="form-control" placeholder="Nom" />
-          <p class="font-weight-bold">PD #1</p>
+          <input type="text" name="student" class="form-control" placeholder="Nom alumne/a" />
+          <hr />
+          <p class="font-weight-bold form-inline">PD #1 | Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;PRF1: <input type="radio" id="pd01prf1true" name="pd01prf1" value="true"> <label for="pd01prf1true">Sí</label> <input type="radio" id="pd01prf1false" name="pd01prf1" value="true"> <label for="pd01prf1false">No</label> <span id="time_pd01prf1"></span><br>
           &nbsp;&nbsp;PRF2: <input type="radio" id="pd01prf2true" name="pd01prf2" value="true"> <label for="pd01prf2true">Sí</label> <input type="radio" id="pd01prf2false" name="pd01prf2" value="true"> <label for="pd01prf2false">No</label> <span id="time_pd01prf2"></span><br>
           &nbsp;&nbsp;PRF3: <input type="radio" id="pd01prf3true" name="pd01prf3" value="true"> <label for="pd01prf3true">Sí</label> <input type="radio" id="pd01prf3false" name="pd01prf3" value="true"> <label for="pd01prf2false">No</label> <span id="time_pd01prf3"></span><br>
-
-          <p class="font-weight-bold">PD #2 <span id="time_pd02"></span></p>
+          <hr />
+          <p class="font-weight-bold form-inline">PD #2 <span id="time_pd02"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd02a" name="pd02" value="a"> <label for="pd02a">Hemograma</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd02b" name="pd02" value="b"> <label for="pd02b">Coagulación</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd02c" name="pd02" value="c"> <label for="pd02c">Gasometría</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd02d" name="pd02" value="d"> <label for="pd02d">F. Renal / Ionograma</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #3 <span id="time_pd03"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd03a" name="pd03" value="a"> <label for="pd03a">Acidosis metabólica</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd03b" name="pd03" value="b"> <label for="pd03b">Alcalosis metabólica</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd03c" name="pd03" value="c"> <label for="pd03c">Acidosis respiratoria</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd03d" name="pd03" value="d"> <label for="pd03d">Alcalosis respiratoria</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #4 <span id="time_pd04"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd04a" name="pd04" value="a"> <label for="pd04a">Monagan</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd04b" name="pd04" value="b"> <label for="pd04b">Venturi</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #5 <span id="time_pd05"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd05a" name="pd05" value="a"> <label for="pd05a">Avisar médico</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd05b" name="pd05" value="b"> <label for="pd05b">Dejar descansar</label><br>
-          &nbsp;&nbsp;<input type="radio" id="pd05c" name="pd05" value="c"> <label for="pd05c">Alterada</label><br>
-          &nbsp;&nbsp;<input type="radio" id="pd05d" name="pd05" value="d"> <label for="pd05d">NO alterada</label><br>
-
+          &nbsp;&nbsp;<input type="radio" id="pd05c" name="pd05" value="c"> <label for="pd05c">Analítica alterada</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd05d" name="pd05" value="d"> <label for="pd05d">Analítica NO alterada</label><br>
+          <hr />
           <p class="font-weight-bold">PD #6 <span id="time_pd06"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd06a" name="pd06" value="a"> <label for="pd06a">Paracetamol</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd06b" name="pd06" value="b"> <label for="pd06b">Amlodipino</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd06c" name="pd06" value="c"> <label for="pd06c">Salbutamol</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #7 <span id="time_pd07"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd07a" name="pd07" value="a"> <label for="pd07a">Metilprednisolona</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd07b" name="pd07" value="b"> <label for="pd07b">Ipratropio</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd07c" name="pd07" value="c"> <label for="pd07c">Salbutamol</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #8 <span id="time_pd08"></span></p>
-          &nbsp;&nbsp;<input type="radio" id="pd08a" name="pd08" value="a"> <label for="pd08a">Mejora</label><br>
-
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd08a" name="pd08" value="a"> <label for="pd08a">Ha empeorado</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd08b" name="pd08" value="a"> <label for="pd08b">Ha mejorado</label><br>
+          <hr />
           <p class="font-weight-bold">PD #9 <span id="time_pd09"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd09a" name="pd09" value="a"> <label for="pd09a">TAC</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd09b" name="pd09" value="b"> <label for="pd09b">ECG</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd09c" name="pd09" value="c"> <label for="pd09c">Glucémia</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #10 <span id="time_pd10"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd10a" name="pd10" value="a"> <label for="pd10a">MDZ</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd10b" name="pd10" value="b"> <label for="pd10b">Paracetamol</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd10c" name="pd10" value="c"> <label for="pd10c">BMT</label><br>
@@ -184,12 +195,16 @@
           <!--&nbsp;&nbsp;<input type="radio" id="pd10f" name="pd10" value="f"> <label for="pd10f">BMT</label><br>-->
           &nbsp;&nbsp;<input type="radio" id="pd10g" name="pd10" value="g"> <label for="pd10g">Glucosa 50%</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd10h" name="pd10" value="h"> <label for="pd10h">Glucagón</label><br>
-
+          <hr />
           <p class="font-weight-bold">PD #11 <span id="time_pd11"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
           &nbsp;&nbsp;<input type="radio" id="pd11a" name="pd11" value="a"> <label for="pd11a">Glucosa 50%</label><br>
           &nbsp;&nbsp;<input type="radio" id="pd11b" name="pd11" value="b"> <label for="pd11b">Glucagón</label><br>
           <!--&nbsp;&nbsp;<input type="radio" id="pd11c" name="pd11" value="c"> <label for="pd11c">Glucosa 50%</label><br>-->
           <!--&nbsp;&nbsp;<input type="radio" id="pd11d" name="pd11" value="d"> <label for="pd11d">Glucagón</label><br>-->
+          <hr />
+          <p class="font-weight-bold">Puntuación final obtenida:</p>
+          <input type="text" class="form-control" />
         </div>
         <div class="card-footer">
           <span class="btn btn-primary" onclick="window.print();">Imprimir</span>
