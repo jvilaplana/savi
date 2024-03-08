@@ -1,1 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Jordi Vilaplana">
+    <title>Projecte SAVI 360 - Universitat de Lleida</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="https://www.udl.cat/favicon.ico" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .starter-template {
+        margin-top: 80px;
+      }
+      #stopwatch {
+        background: #eee;
+        border: 1px solid #999;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 250px;
+      }
+      #sw-time {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+      }
+      #sw-rst, #sw-go {
+        width: 45%;
+        box-sizing: padding-box;
+        padding: 4px;
+        display: inline-block;
+        background: #aa2f2f;
+        border: 0;
+        color: #fff;
+      }
+      .navbar-dark {
+        background-color: #830051 !important;
+      }
+
+      @media print {
+        nav, .col-9, #stopwatch, .card-footer {
+          display: none;
+        }
+        .col-3 {
+          width: 100%;
+          max-width: 100%;
+          flex: auto;
+          float: left;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#"><img src="http://www.imatge.udl.cat/marca/png/simbol.png" height="40" title="UdL" /> SAVI 360</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <!--
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    -->
+  </div>
+</nav>
+<main role="main" class="container-fluid starter-template">
+  <div class="row">
+    <div class="col-9">
+      <h1>Proyecto SAVI 360</h1>
+    </div>
+    <div class="col-3">
+      <div id="stopwatch">
+        <!-- [DISPLAY TIMER] -->
+        <div id="sw-time">00:00:00</div>
+        <!-- [RESET BUTTON] -->
+        <input type="button" value="Reiniciar" id="sw-rst" disabled/>
+        <!-- [START/STOP BUTTON] -->
+        <input type="button" value="Iniciar" id="sw-go" disabled/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12"><hr /></div>
+  </div>
+  <div class="row">
+    <div class="col-9 mt-3">
+      <iframe id="virtualSim" class="_vs-player position-fixed" src="https://app.videotours360.com/tour/view/MTE2NDA=" width=720 height=405 frameborder="0" allow="autoplay *" style="opacity: 0"></iframe><script src="https://vsplayer.global.ssl.fastly.net/wrapper-v3.js"></script>
+    </div>
+    <div class="col-3">
+      <div class="card mt-3">
+        <div class="card-header">
+          Puntos de decisión (PD)
+        </div>
+        <div class="card-body">
+          <input type="text" name="student" class="form-control" placeholder="Nom alumne/a" />
+          <hr />
+          <p class="font-weight-bold form-inline">PD #1 | Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;PRF1: <input type="radio" id="pd01prf1true" name="pd01prf1" value="true"> <label for="pd01prf1true">Sí</label> <input type="radio" id="pd01prf1false" name="pd01prf1" value="true"> <label for="pd01prf1false">No</label> <span id="time_pd01prf1"></span><br>
+          &nbsp;&nbsp;PRF2: <input type="radio" id="pd01prf2true" name="pd01prf2" value="true"> <label for="pd01prf2true">Sí</label> <input type="radio" id="pd01prf2false" name="pd01prf2" value="true"> <label for="pd01prf2false">No</label> <span id="time_pd01prf2"></span><br>
+          &nbsp;&nbsp;PRF3: <input type="radio" id="pd01prf3true" name="pd01prf3" value="true"> <label for="pd01prf3true">Sí</label> <input type="radio" id="pd01prf3false" name="pd01prf3" value="true"> <label for="pd01prf2false">No</label> <span id="time_pd01prf3"></span><br>
+          <hr />
+          <p class="font-weight-bold form-inline">PD #2 <span id="time_pd02"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd02a" name="pd02" value="a"> <label for="pd02a">Hemograma</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd02b" name="pd02" value="b"> <label for="pd02b">Coagulación</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd02c" name="pd02" value="c"> <label for="pd02c">Gasometría</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd02d" name="pd02" value="d"> <label for="pd02d">F. Renal / Ionograma</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #3 <span id="time_pd03"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd03a" name="pd03" value="a"> <label for="pd03a">Acidosis metabólica</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd03b" name="pd03" value="b"> <label for="pd03b">Alcalosis metabólica</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd03c" name="pd03" value="c"> <label for="pd03c">Acidosis respiratoria</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd03d" name="pd03" value="d"> <label for="pd03d">Alcalosis respiratoria</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #4 <span id="time_pd04"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd04a" name="pd04" value="a"> <label for="pd04a">Monagan</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd04b" name="pd04" value="b"> <label for="pd04b">Venturi</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #5 <span id="time_pd05"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd05a" name="pd05" value="a"> <label for="pd05a">Avisar médico</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd05b" name="pd05" value="b"> <label for="pd05b">Dejar descansar</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd05c" name="pd05" value="c"> <label for="pd05c">Analítica alterada</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd05d" name="pd05" value="d"> <label for="pd05d">Analítica NO alterada</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #6 <span id="time_pd06"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd06a" name="pd06" value="a"> <label for="pd06a">Paracetamol</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd06b" name="pd06" value="b"> <label for="pd06b">Amlodipino</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd06c" name="pd06" value="c"> <label for="pd06c">Salbutamol</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #7 <span id="time_pd07"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd07a" name="pd07" value="a"> <label for="pd07a">Metilprednisolona</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd07b" name="pd07" value="b"> <label for="pd07b">Ipratropio</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd07c" name="pd07" value="c"> <label for="pd07c">Salbutamol</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #8 <span id="time_pd08"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd08a" name="pd08" value="a"> <label for="pd08a">Ha empeorado</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd08b" name="pd08" value="a"> <label for="pd08b">Ha mejorado</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #9 <span id="time_pd09"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd09a" name="pd09" value="a"> <label for="pd09a">TAC</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd09b" name="pd09" value="b"> <label for="pd09b">ECG</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd09c" name="pd09" value="c"> <label for="pd09c">Glucémia</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #10 <span id="time_pd10"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd10a" name="pd10" value="a"> <label for="pd10a">MDZ</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd10b" name="pd10" value="b"> <label for="pd10b">Paracetamol</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd10c" name="pd10" value="c"> <label for="pd10c">BMT</label><br>
+          <!--&nbsp;&nbsp;<input type="radio" id="pd10d" name="pd10" value="d"> <label for="pd10d">MDZ</label><br>-->
+          <!--&nbsp;&nbsp;<input type="radio" id="pd10e" name="pd10" value="e"> <label for="pd10e">Paracetamol</label><br>-->
+          <!--&nbsp;&nbsp;<input type="radio" id="pd10f" name="pd10" value="f"> <label for="pd10f">BMT</label><br>-->
+          &nbsp;&nbsp;<input type="radio" id="pd10g" name="pd10" value="g"> <label for="pd10g">Glucosa 50%</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd10h" name="pd10" value="h"> <label for="pd10h">Glucagón</label><br>
+          <hr />
+          <p class="font-weight-bold">PD #11 <span id="time_pd11"></span></p>
+          <p class="font-weight-bold form-inline">Intents: <input type="number" min="1" value="1" max="10" class="form-control form-control-sm" /></p>
+          &nbsp;&nbsp;<input type="radio" id="pd11a" name="pd11" value="a"> <label for="pd11a">Glucosa 50%</label><br>
+          &nbsp;&nbsp;<input type="radio" id="pd11b" name="pd11" value="b"> <label for="pd11b">Glucagón</label><br>
+          <!--&nbsp;&nbsp;<input type="radio" id="pd11c" name="pd11" value="c"> <label for="pd11c">Glucosa 50%</label><br>-->
+          <!--&nbsp;&nbsp;<input type="radio" id="pd11d" name="pd11" value="d"> <label for="pd11d">Glucagón</label><br>-->
+          <hr />
+          <p class="font-weight-bold">Puntuación final obtenida:</p>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="card-footer">
+          <span class="btn btn-primary" onclick="window.print();">Imprimir</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-12">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_Universitat_de_Lleida.svg" height="48" />
+      <img src="https://media-exp1.licdn.com/dms/image/C560BAQGVf59S3d9F6A/company-logo_200_200/0/1548849791251?e=2159024400&v=beta&t=DoxlopOlAhPVUB8KTlAoxrW8tv4u8daugVsvOD6p2N4" height="48" style="padding-left: 20px;" />
+    </div>
+  </div>
+</main><!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bienvenido/a a la Simulación Virtual SAVI!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>En la siguiente actividad realizará una simulación virtual en que, dependiendo de tus decisiones, el caso evolucionará de una forma o de otra. Al final de la simulación verás tu puntuación final en función de las deiciones tomadas durante la misma.</p>
+        <p class="lead"><i class="fas fa-info-circle"></i> Instrucciones</p>
+        <ul>
+          <li><i class="far fa-clock"></i> La sesión tiene una duración aproximada de entre 30 - 45 minutos.</li>
+          <li><i class="far fa-hand-paper"></i> Una vez empezada, se debe finalizar en la misma sesión.</li>
+          <li><i class="fas fa-power-off"></i> No se puede retroceder ni guardar el progreso, si se cierra la ventana se tendrá que empezar de nuevo.</li>
+          <li><i class="fas fa-stopwatch"></i> Dispones de un cronometro integrado para monitorizar el tiempo invertido. Debes registrar al lado de cada punto de decisión el minuto y los segundos en los que tomas cada decisión.</li>
+          <li><i class="fas fa-check-double"></i> Dispones de un checklist en el que debes marcar las decisiones tomadas. Disponéis de un registro de decisiones, es importante que registréis el número de errores que cometéis en cada punto de decisión.</li>
+          <li><i class="far fa-clock"></i> Indicar la hora de inicio y de final de la actividad.</li>
+          <li><i class="far fa-folder"></i> En el punto de decisión 1 (seleccionar 1 entre 3 carpetas), es muy importante que TODOS empecéis por la carpeta 1 y sigáis en orden lógico.</li>
+          <li><i class="far fa-play-circle"></i> Pulsa en el símbolo de "Play" en el vídeo para empezar la simulación.</li>
+        </ul>
+        <p>¡Buena suerte!</p>
+      </div>
+      <div class="modal-footer">
+        <button id="startButton" type="button" class="btn btn-primary mr-auto" data-dismiss="modal">Empezar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/292f181dff.js" crossorigin="anonymous"></script>
+<script src="stopwatch.js"></script>
+<script type="text/javascript">
+  $('#exampleModal').modal('show');
+  $('input[type=radio]').change(function() {
+    $('#time_' + $(this).attr('name')).html('(<i class="fas fa-stopwatch"></i> ' + $('#sw-time').html() + ')');
+  });
+  $('#startButton').click(function() { $('#sw-go').click(); });
+</script>
+</body>
+</html>
+
+<!--
+<iframe id="_vs-player" class="_vs-player" src="https://swiftcdn6.global.ssl.fastly.net/projects/5e56942a1c7e0/index.html?cacheBuster=y0gwi7ff1ie3xqmyf3141t" width="1000" height="562.5" frameborder="0" allow="autoplay *" style="margin-left: auto; margin-right: auto; display: block; opacity: 1;"></iframe>
+-->
